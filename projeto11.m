@@ -21,19 +21,12 @@ g_image=rgb2gray(c_img);
 g_image =g_image;
 
 figure; imshow(g_image);
-
 mypsnr =[];
-
-vetor_nComp =5:5:90;
-
+vetor_nComp = 5:5:90;
 g_image_d=double(g_image);
-
 g_image_d_m=mean(g_image_d);
-
 g_image_d_m_adjusted=(g_image_d-g_image_d_m);
-
 [coeff,score, ~ , ~, ~] = pca(g_image_d_m_adjusted);
-
 for nComp = vetor_nComp 
     reconstruction = score(:,1:nComp)*coeff(:,1:nComp)';
     final_reconstruction=(reconstruction+g_image_d_m);
